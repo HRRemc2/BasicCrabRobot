@@ -1,3 +1,10 @@
+/*
+Range for servo1(180, 70)
+Range for servo2(0, 70)
+Range for servo3(0, 110)
+*/
+
+
 #include <Servo.h>
 
 Servo myservo1;
@@ -16,23 +23,22 @@ void AllWrite(int custom1, int custom2){
   myservo4.write(custom2);
 }
 void AllTurn(int TurnSpeed){
-  for (pos = 0, pos2 = 180; pos <= 180, pos2 >=0; pos += 1, pos2 -=1) { // goes from 0 degrees to 180 degrees
+  for (pos = 0, pos2 = 180; pos <= 180, pos2 >=0; pos += 1, pos2 -=1) {
     // in steps of 1 degree
     myservo1.write(pos);
     myservo2.write(pos2);
     myservo3.write(pos2);
     myservo4.write(pos);
-    delay(TurnSpeed);                       // waits 15ms for the servo to reach the position
+    delay(TurnSpeed);
   }
-  for (pos = 180, pos2 = 0; pos >= 0, pos2 <= 180; pos -= 1, pos2 += 1) { // goes from 180 degrees to 0 degrees
+  for (pos = 180, pos2 = 0; pos >= 0, pos2 <= 180; pos -= 1, pos2 += 1) { 
     myservo1.write(pos);
     myservo2.write(pos2);
     myservo3.write(pos2);
     myservo4.write(pos);
-    delay(TurnSpeed);                       // waits 15ms for the servo to reach the position
+    delay(TurnSpeed);
   }
 }
-
 
 void setup() {
   myservo1.attach(13);  
@@ -43,6 +49,7 @@ void setup() {
   
 }
 
+
 void loop() {
   //AllWrite(0, 0);
   //delay(500);
@@ -50,11 +57,14 @@ void loop() {
   myservo1.write(180);
   myservo2.write(0);
   myservo3.write(0);
-  myservo4.write(0);
+  //myservo4.write(180);
   delay(1000);
   myservo1.write(70);
-  myservo2.write(110);
+  //myservo2.write(110);
+  //myservo3.write(100);
+  //myservo4.write(150);
   delay(1000);
+
   
 
 }
